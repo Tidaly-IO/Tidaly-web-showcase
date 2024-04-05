@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import { ArrowRightCircle } from "react-bootstrap-icons"
-import HeaderImg from "../assets/img/memoji.png"
+import HeaderImg from "../assets/img/memoji4.png"
 import { useState, useEffect } from "react"
 
 export const Banner = () => {
@@ -10,8 +10,8 @@ export const Banner = () => {
     const [text, setText] = useState('');
     const [delta, setDelta] = useState(300 - Math.random() * 100);
     const [index, setIndex] = useState(1);
-    const toRotate = [ "Mobile", "IOS" ];
-    const period = 2000;
+    const toRotate = [ "l'eau"];
+    const period = 500;
 
     useEffect(() => {
         let ticker = setInterval(() => {
@@ -53,9 +53,9 @@ export const Banner = () => {
                 <Row className="align-items-center">
                     <Col xs={12} md={6} xl={7}>
 
-                        <h1>{``}<span className="wrap">SABOURDY Nathan</span></h1>
-                        <h1>{``}Développeur<span className="wrap2"> {text}</span></h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                        <h1>{``}<span className="wrap">BIENVENUE !</span></h1>
+                        <h1>{``}ENSEMBLE cultivons la sagesse de<span className="wrap2"> {text}</span></h1>
+                        <p style={{ color: 'white' }}>Projet fondé en 2022</p>
                     </Col>
 
                     <Col xs={12} md={6} xl={5}>
