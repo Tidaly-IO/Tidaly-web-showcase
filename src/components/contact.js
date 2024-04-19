@@ -1,45 +1,42 @@
-import { useState } from "react";
+import { useState, useRef } from "react"; 
+import emailjs from '@emailjs/browser';
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img-svg.svg";
 import TrackVisibility from 'react-on-screen';
 
+
 export const Contact = () => {
-  const formInitialDetails = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-  }
-  const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState('Envoyer');
-  const [status, setStatus] = useState({});
+  const form = useRef();
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
-  const onFormUpdate = (category, value) => {
-      setFormDetails({
-        ...formDetails,
-        [category]: value
-      })
-  }
-
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    setButtonText("Envoi...");
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Envoyer");
-    let result = await response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code == 200) {
-      setStatus({ succes: true, message: 'Message sent successfully'});
-    } else {
-      setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
-    }
+    setIsSending(true);
+
+    emailjs
+      .sendForm('service_26pe0vk', 'template_32i210o', form.current, {
+        publicKey: 'Woq2O9hG4Ep7KDFnI',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setIsSending(false);
+          setIsSent(true);
+          setSendError(false);
+          form.current.reset();
+          setTimeout(() => {
+            setIsSent(false);
+          }, 5000); // Masquer le message envoyé après 5 secondes
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          setIsSending(false);
+          setIsSent(false);
+          setSendError(true);
+        },
+      );
   };
 
   return (
@@ -58,32 +55,36 @@ export const Contact = () => {
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <h2 style={{ color: 'black' }}>Contacter </h2>
-                <form onSubmit={handleSubmit}>
+                <form ref={form} onSubmit={sendEmail}>
                   <Row>
                     <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.firstName} placeholder="Prénom" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
+                      <input type="text" placeholder="Prénom"  name="name" />
                     </Col>
                     <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.lasttName} placeholder="Nom" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
+                      <input type="text" placeholder="Nom"  name="lastName"/>
                     </Col>
                     <Col size={12} sm={6} className="px-1">
-                      <input type="email" value={formDetails.email} placeholder="Email" onChange={(e) => onFormUpdate('email', e.target.value)} />
+                      <input type="email" placeholder="Email" name="mail"/>
                     </Col>
                     <Col size={12} sm={6} className="px-1">
-                      <input type="tel" value={formDetails.phone} placeholder="Téléphone" onChange={(e) => onFormUpdate('phone', e.target.value)}/>
+                      <input type="tel" placeholder="Téléphone" name="phoneNumber"/>
                     </Col>
                     <Col size={12} className="px-1">
-                      <textarea rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
-                      <button type="submit"><span>{buttonText}</span></button>
+                      <textarea rows="6" placeholder="Message"  name="message"></textarea>
+                      {isSending ? (
+                        <button disabled><span>Envoi en cours...</span></button>
+                      ) : (
+                        <button type="submit" value="Send"><span>Envoyer</span></button>
+                      )}
                     </Col>
-                    {
-                      status.message &&
-                      <Col>
-                        <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
-                      </Col>
-                    }
                   </Row>
                 </form>
+                {isSent && (
+                  <div className="sent-message success">Le message a été envoyé avec succès!</div>
+                )}
+                {sendError && (
+                  <div className="sent-message error">Une erreur s'est produite lors de l'envoi du message. Veuillez réessayer.</div>
+                )}
               </div>}
             </TrackVisibility>
           </Col>
