@@ -127,7 +127,7 @@ const Timeline = () => {
 
   return (
     <div style={{ backgroundColor: '#64a9ea'}} id="timeline">
-        <div style={{ padding: '0 100px' , marginTop:'-20px'}}>
+        <div style={{ padding: '50px 100px' , marginTop:'-20px'}}>
             <section className="project" id="projects" >
 
             <Container>
