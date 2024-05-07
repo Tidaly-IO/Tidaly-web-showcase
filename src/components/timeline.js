@@ -14,7 +14,7 @@ const Home = () => {
     cardTitle: " ",
     url: "http://www.history.com",
     // cardSubtitle:"Les débuts",
-    cardDetailedText: "Brainstorming autour de l'idée Tidaly. Mise en contact avec les entreprises DIELH METERING et d'autre entreprise dans le secteur de l'eau pour comprendre et savoir si Tidaly est une solution viable.",
+    cardDetailedText: "Brainstorming autour de l'idée de Tidaly. Mise en contact avec l'entreprise DIELH METERING et d'autres entreprises dans le secteur de l'eau pour comprendre et savoir si Tidaly est une solution viable.",
     media: {
       type: "IMAGE",
       source: {
@@ -27,7 +27,7 @@ const Home = () => {
     title: "HACKING INDUSTRY CAMP",
     // cardSubtitle: "Event Subtitle",
     // https://www.linkedin.com/feed/update/urn:li:activity:7003375097554083840/
-    cardDetailedText: "Tidaly participe pour la première fois à un concours entrepreneurial et remporte le prix du meilleur de la meilleur solution IOT (Internet Des Objets).",
+    cardDetailedText: "Tidaly participe pour la première fois à un concours entrepreneurial et remporte le prix de la meilleure solution IoT (Internet des Objets).",
     media: {
         type: "IMAGE",
         source: {
@@ -39,7 +39,7 @@ const Home = () => {
   {
     title: "TESTE ET APPRENTISSAGE",
     // cardSubtitle: "Event Subtitle",
-    cardDetailedText: "Création du groupe Tidaly comptant 6 membres. Premier avancement sur l'application mobile / web et sur la solution principale le hub connecté.",
+    cardDetailedText: "Création du groupe Tidaly comptant 6 membres. Premier avancement sur l'application mobile/web et sur la solution principale, le hub connecté.",
     media: {
         type: "IMAGE",
         source: {
@@ -52,7 +52,7 @@ const Home = () => {
     title: "MANAGEMENT ET PROCESSUS",
     // cardTitle: "Event Title",
     // cardSubtitle: "Event Subtitle",
-    cardDetailedText: "Création de règle au sein de l'équipe et de son organisation dans le temps pour la bonne avancé du projet. Amélioration en parallèle sur l'application mobile / web et hub connecté.",
+    cardDetailedText: "Création de règles au sein de l'équipe et de son organisation dans le temps pour la bonne avancée du projet. Amélioration en parallèle sur l'application mobile/web et le hub connecté.",
     media: {
         type: "IMAGE",
         source: {
@@ -63,7 +63,7 @@ const Home = () => {
 
   {
     title: "ALPHA PROTOTYPE",
-    cardDetailedText: "Solution web et mobile ayant la possibilité de récupérer et d'afficher les données de consommation de votre maison. La solution du Hub connecté n'est cependant non finalisé.",
+    cardDetailedText: "Solution web et mobile ayant la possibilité de récupérer et d'afficher les données de consommation de votre maison. Cependant, la solution du Hub connecté n'est pas encore finalisée.",
     media: {
         type: "IMAGE",
         source: {
