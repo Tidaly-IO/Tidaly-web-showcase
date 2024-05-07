@@ -3,7 +3,7 @@ import { Container, Row, Col, Tab, Nav } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import TrackVisibility from 'react-on-screen';
-
+import Timeline from './timeline';
 
 // Mobile Pictures Img
 import loginM from '../assets/img/mobile/login.png';
@@ -30,8 +30,8 @@ import statsW from '../assets/img/web/statsWeb.png';
 // Hardware Pictures Img
 import hub from '../assets/img/hardware/hub.png';
 import sensorMeterFlow from '../assets/img/hardware/sensorMeterFlow.png';
-// Web Pictures Img
 
+// Web Pictures Img
 
 export const Projects = () => {
 
@@ -135,8 +135,11 @@ export const Projects = () => {
   ));
 
   return (
+
     <section className="project" id="projects">
       <Container>
+
+        
         <Row>
           <Col>
             <TrackVisibility>
@@ -155,6 +158,8 @@ export const Projects = () => {
                       <hr style={{ border:'3px solid #bbb;' }}></hr>
                       </b>
                   </p>
+
+
                   <Tab.Container id="projects-tabs" activeKey={activeTab} onSelect={handleTabChange}>
                     <Nav
                       variant="pills"
